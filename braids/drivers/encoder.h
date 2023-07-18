@@ -8,10 +8,10 @@
 // to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
 // copies of the Software, and to permit persons to whom the Software is
 // furnished to do so, subject to the following conditions:
-// 
+//
 // The above copyright notice and this permission notice shall be included in
 // all copies or substantial portions of the Software.
-// 
+//
 // THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
 // IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
 // FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
@@ -19,7 +19,7 @@
 // LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 // OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN
 // THE SOFTWARE.
-// 
+//
 // See http://creativecommons.org/licenses/MIT/ for more information.
 //
 // -----------------------------------------------------------------------------
@@ -38,14 +38,14 @@ class Encoder {
  public:
   Encoder() { }
   ~Encoder() { }
-  
+
   void Init();
   void Debounce();
-  
+
   inline bool released() const {
     return switch_state_ == 0x7f;
   }
-  
+
   inline bool just_pressed() const {
     return switch_state_ == 0x80;
   }
@@ -53,11 +53,11 @@ class Encoder {
   inline bool pressed() const {
     return switch_state_ == 0x00;
   }
-  
+
   inline bool pressed_immediate() const {
-    return !GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
+    return !GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_2);
   }
-  
+
   inline int32_t increment() const {
     int32_t increment = 0;
     uint8_t a = quadrature_decoding_state_[0];
@@ -71,11 +71,11 @@ class Encoder {
     }
     return increment;
   }
- 
+
  private:
   uint8_t switch_state_;
   uint8_t quadrature_decoding_state_[2];
-  
+
   DISALLOW_COPY_AND_ASSIGN(Encoder);
 };
 
