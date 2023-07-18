@@ -44,11 +44,11 @@ void Encoder::Init() {
 
 void Encoder::Debounce() {
   switch_state_ = (switch_state_ << 1) | \
-      GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_13);
+      GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_2);
   quadrature_decoding_state_[0] = (quadrature_decoding_state_[0] << 1) | \
-      GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_14);
+      GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_0);
   quadrature_decoding_state_[1] = (quadrature_decoding_state_[1] << 1) | \
-      GPIO_ReadInputDataBit(GPIOC, GPIO_Pin_15);
+      GPIO_ReadInputDataBit(GPIOA, GPIO_Pin_1);
 }
 
 }  // namespace braids
