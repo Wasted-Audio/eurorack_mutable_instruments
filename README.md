@@ -1,3 +1,11 @@
+# Through Hole Braids 
+make -f braids/bootloader/makefile
+make -f braids/makefile upload
+
+# fails, but then:
+stm32flash /dev/ttyUSB0 -w braids_bootloader_combo.bin -v -g 0x0
+
+
 Mutable Instruments' Eurorack Modules.
 
 * [Blades](http://mutable-instruments.net/modules/blades): Dual multimode filter.
